@@ -6,22 +6,20 @@ import { MotiView } from 'moti'
 import { UserPhoto } from '../UserPhoto'
 
 import { styles } from './styles'
+import { useAuth } from '../../hooks/auth'
 export type MessageProps = {
     id: string,
     text: string,
-    user:{
-        id: string,
-        name: string,
-        login: string,
-        avatar_url: string,
-    }
 }
+
 
 type Props = {
     data:MessageProps
 }
 
 export const Message = ({data}:Props) =>{
+
+    const { user } = useAuth()
 
      return(
           <MotiView 
@@ -33,8 +31,8 @@ export const Message = ({data}:Props) =>{
             <Text style={styles.message}>{data.text}</Text>
 
             <View style={styles.footer}>
-                <UserPhoto sizes='SMALL' imageUri={data.user.avatar_url}/>
-                <Text style={styles.userName}>{data.user.name}</Text>
+                <UserPhoto sizes='SMALL' imageUri={user?.avatar_url}/>
+                <Text style={styles.userName}>{user?.name}</Text>
             </View>
           </MotiView>
      )

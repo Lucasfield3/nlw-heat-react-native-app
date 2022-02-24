@@ -2,8 +2,8 @@ import React from 'react'
 
 import {
     ScrollView,
-View
 } from 'react-native'
+import { useAuth } from '../../hooks/auth'
 import { Message } from '../Message'
 
 
@@ -11,15 +11,11 @@ import { styles } from './styles'
 
 export const MessageList = () =>{
 
+    const { user } = useAuth()
+
     const message = {
         id: '1',
         text: 'Texto da mensagem',
-        user:{
-            id: '2',
-            name: 'lucas',
-            login: 'Lucasfield3',
-            avatar_url: 'https://github.com/Lucasfield3.png',
-        }
     }
 
      return(
