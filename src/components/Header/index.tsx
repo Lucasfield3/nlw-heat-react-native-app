@@ -14,15 +14,15 @@ import { useAuth } from '../../hooks/auth'
 
 export const Header = () =>{
 
-     const { user } = useAuth()
+     const { user, signOut } = useAuth()
 
      return(
           <View style={styles.container}>
                <LogoSvg/>
                <View style={styles.logoutButton}>
-                    <TouchableOpacity>
+                   {user && <TouchableOpacity onPress={signOut}>
                          <Text style={styles.logoutText}>Sair</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity>}
                     <UserPhoto imageUri={user?.avatar_url}/>
                </View>
           </View>
